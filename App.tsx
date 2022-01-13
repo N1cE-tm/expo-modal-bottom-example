@@ -1,20 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useMemo } from "react";
+import { ShowcaseApp } from "@gorhom/showcase-template";
+import { screens } from "./src/screens";
+import { version } from "./package.json";
+import { enableScreens } from "react-native-screens";
+enableScreens(true);
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const App = () => {
+	// variables
+	const author = useMemo(
+		() => ({
+			username: "Mo Gorhom",
+			url: "https://gorhom.dev",
+		}),
+		[]
+	);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+	return <ShowcaseApp name="Bottom Sheet" description="123" version={version} author={author} data={screens} />;
+};
+
+export default App;
